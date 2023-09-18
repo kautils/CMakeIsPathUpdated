@@ -3,13 +3,13 @@ macro(CMakeIsPathUpdated CMakeIsPathUpdated_res)
     set(${PROJECT_NAME}_CMakeIsPathUpdated_m_evacu ${m})
     set(m CMakePullLocalRepositoryAsSymLink)
     
-    cmake_parse_arguments(${m} "" "DIRECTORY" "" ${ARGN})
-    list(APPEND ${m}_unsetter ${m}_DIRECTORY CMakeIsPathUpdated_res)
-    list(APPEND ${m}_unsetter ${m}_DIRECTORY CMakeIsPathUpdated_res)
+    cmake_parse_arguments(${m} "" "PATH" "" ${ARGN})
+    list(APPEND ${m}_unsetter ${m}_PATH CMakeIsPathUpdated_res)
+    list(APPEND ${m}_unsetter ${m}_PATH CMakeIsPathUpdated_res)
     list(APPEND ${m}_unsetter ${m}_buf ${m}_files ${m}_path CMakeIsPathUpdated_res)
     
-    set(${m}_path "${${m}_DIRECTORY}")
-    if(IS_DIRECTORY ${${m}_DIRECTORY}) # directory 
+    set(${m}_path "${${m}_PATH}")
+    if(IS_DIRECTORY ${${m}_PATH}) # directory 
         file(GLOB_RECURSE ${m}_files ${${m}_path}/*)
         string(REPLACE  ":" "" ${m}_path "${${m}_path}")
         foreach(__var ${${m}_files})
